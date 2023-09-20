@@ -39,7 +39,15 @@ public class ListarPlaylists implements Initializable {
         this.repositorio = repositorio;
     }
 
+    @FXML
+    void editar(ActionEvent event) {
+        Playlist selecionado = lstPlaylists.getSelectionModel().getSelectedItem();
 
+        if(selecionado != null ){
+            App.pushScreen("CADASTRAPLAYLIST", o->new CadastroPlaylist(repositorio, selecionado));
+            System.out.println("Teste...");
+        }
+    }
 
     @FXML
     void voltar(ActionEvent event) {

@@ -9,6 +9,7 @@ import com.github.hugoperlin.results.Resultado;
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.model.entities.Artista;
 import ifpr.pgua.eic.colecaomusicas.model.entities.Genero;
+import ifpr.pgua.eic.colecaomusicas.model.entities.Musica;
 import ifpr.pgua.eic.colecaomusicas.model.repositories.RepositorioArtistas;
 import ifpr.pgua.eic.colecaomusicas.model.repositories.RepositorioGeneros;
 import ifpr.pgua.eic.colecaomusicas.model.repositories.RepositorioMusicas;
@@ -43,11 +44,17 @@ public class CadastroMusica implements Initializable{
     private RepositorioMusicas repositorio;
     private RepositorioArtistas repositorioArtistas;
     private RepositorioGeneros repositorioGeneros;
+    private Musica antigo = null;
 
     public CadastroMusica(RepositorioMusicas repositorio, RepositorioGeneros repositorioGeneros, RepositorioArtistas repositorioArtistas){
         this.repositorio = repositorio;
         this.repositorioArtistas = repositorioArtistas;
         this.repositorioGeneros = repositorioGeneros;
+    }
+
+    public CadastroMusica(RepositorioMusicas repositorio2, Musica selecionado) {
+        this.repositorio = repositorio2;
+        this.antigo = selecionado;
     }
 
     @FXML
@@ -87,6 +94,11 @@ public class CadastroMusica implements Initializable{
 
         alert.showAndWait();
 
+    }
+
+    @FXML
+    private void editar() {
+        
     }
 
     @FXML

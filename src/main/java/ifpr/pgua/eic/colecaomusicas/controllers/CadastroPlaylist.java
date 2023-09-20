@@ -8,6 +8,7 @@ import com.github.hugoperlin.results.Resultado;
 
 import ifpr.pgua.eic.colecaomusicas.App;
 import ifpr.pgua.eic.colecaomusicas.model.entities.Musica;
+import ifpr.pgua.eic.colecaomusicas.model.entities.Playlist;
 import ifpr.pgua.eic.colecaomusicas.model.repositories.RepositorioMusicas;
 import ifpr.pgua.eic.colecaomusicas.model.repositories.RepositorioPlaylists;
 import javafx.beans.property.SimpleStringProperty;
@@ -50,14 +51,18 @@ public class CadastroPlaylist implements Initializable {
 
     private RepositorioPlaylists repositorioPlaylists;
     private RepositorioMusicas repositorioMusicas;
-
-
+    private Playlist antigo = null;
     
     public CadastroPlaylist(RepositorioPlaylists repositorioPlaylists, RepositorioMusicas repositorioMusicas) {
         this.repositorioPlaylists = repositorioPlaylists;
         this.repositorioMusicas = repositorioMusicas;
     }
 
+
+    public CadastroPlaylist(RepositorioPlaylists repositorio, Playlist selecionado) {
+        this.repositorioMusicas = repositorioMusicas;
+        this.antigo = selecionado;
+    }
 
     @FXML
     private void cadastrar(){

@@ -58,6 +58,16 @@ public class ListarMusicas implements Initializable {
         App.popScreen();
     }
 
+    @FXML
+    private void editar(){
+        Musica selecionado = tbMusica.getSelectionModel().getSelectedItem();
+
+        if(selecionado != null ){
+            App.pushScreen("CADASTROMUSICA", o->new CadastroMusica(repositorio, selecionado));
+            System.out.println("Teste...");
+        }
+    }
+
 
 
     @Override
