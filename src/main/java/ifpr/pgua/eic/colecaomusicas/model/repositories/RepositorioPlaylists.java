@@ -34,6 +34,16 @@ public class RepositorioPlaylists {
         return playlistDao.criar(playlist);
     }
 
+    public Resultado atualizarPlaylist(int id,String nome) {
+        if(nome.isEmpty() || nome.isBlank()){
+            return Resultado.erro("Nome inválido!");
+        }
+
+        Playlist playlist = new Playlist(nome);
+
+        return playlistDao.atualizar(id, playlist);
+    }
+
     public Resultado listar(boolean completo) {
         Resultado resultado = playlistDao.listar();
         if (resultado.foiSucesso()) {

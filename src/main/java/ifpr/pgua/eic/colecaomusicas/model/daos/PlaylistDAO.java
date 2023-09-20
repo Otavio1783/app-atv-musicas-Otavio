@@ -8,6 +8,7 @@ public interface PlaylistDAO {
     
     Resultado criar(Playlist playlist);
     Resultado listar();
+    Resultado atualizar(int id, Playlist nova);
     Resultado calcularTotalMinutosPlaylist(int id);
 
 }

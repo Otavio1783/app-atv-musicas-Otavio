@@ -44,7 +44,7 @@ public class ListarPlaylists implements Initializable {
         Playlist selecionado = lstPlaylists.getSelectionModel().getSelectedItem();
 
         if(selecionado != null ){
-            App.pushScreen("CADASTRAPLAYLIST", o->new CadastroPlaylist(repositorio, selecionado));
+            App.pushScreen("CADASTRARPLAYLIST", o->new CadastroPlaylist(repositorio, selecionado));
             System.out.println("Teste...");
         }
     }

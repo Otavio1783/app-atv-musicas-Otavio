@@ -39,5 +39,5 @@ CREATE TABLE IF NOT EXISTS playlistsmusicas (
     PRIMARY KEY (id),
     FOREIGN KEY (playlistId) REFERENCES playlists(id),
     FOREIGN KEY (musicaId) REFERENCES musicas(id)
-    
+     
 );

@@ -49,7 +49,7 @@ public class CadastroArtista implements Initializable{
         Resultado  resultado;
         if(antigo == null){
             resultado = repositorio.cadastrarArtista(nome, contato);
-        }else{
+        }else{ 
             resultado = repositorio.atualizarArtista(antigo.getId(),nome, contato);
         }
 

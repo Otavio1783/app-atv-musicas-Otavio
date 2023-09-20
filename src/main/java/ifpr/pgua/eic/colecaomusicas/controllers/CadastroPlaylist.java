@@ -56,12 +56,15 @@ public class CadastroPlaylist implements Initializable {
     public CadastroPlaylist(RepositorioPlaylists repositorioPlaylists, RepositorioMusicas repositorioMusicas) {
         this.repositorioPlaylists = repositorioPlaylists;
         this.repositorioMusicas = repositorioMusicas;
+
+        
     }
 
 
     public CadastroPlaylist(RepositorioPlaylists repositorio, Playlist selecionado) {
-        this.repositorioMusicas = repositorioMusicas;
+        this.repositorioPlaylists = repositorio;
         this.antigo = selecionado;
+
     }
 
     @FXML
@@ -70,6 +73,12 @@ public class CadastroPlaylist implements Initializable {
         List<Musica> selecionadas = tbMusica.getSelectionModel().getSelectedItems();
 
         Resultado resultado = repositorioPlaylists.cadastrarPlaylist(nome, selecionadas);
+
+        if(antigo == null){
+            resultado = repositorioPlaylists.cadastrarPlaylist(nome, selecionadas);
+        }else{ 
+            resultado = repositorioPlaylists.atualizarPlaylist(antigo.getId(),nome);
+        }
 
         if(resultado.foiErro()){
             Alert alert = new Alert(AlertType.ERROR,resultado.getMsg());

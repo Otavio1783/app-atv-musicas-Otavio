@@ -110,10 +110,29 @@ public class JDBCPlaylistDAO implements PlaylistDAO{
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }
-
     }
-    
 
 
+    @Override
+    public Resultado atualizar(int id, Playlist nova) {
+        try(Connection con=fabrica.getConnection()){
 
+            PreparedStatement pstm = con.prepareStatement("UPDATE playlists SET nome = ? WHERE playlists.id = ?;");
+
+            pstm.setInt(1, id );
+            pstm.setString(2, nova.getNome());
+            
+            int ret = pstm.executeUpdate();
+
+            if(ret ==1){
+                nova.setId(id);
+                return Resultado.sucesso("Playlist atualizada!", nova);
+            }else{
+                return Resultado.erro("Falha na atualização da Playlist!");
+            }
+
+        }catch(SQLException e){
+            return Resultado.erro(e.getMessage());
+        }
+    }
 }
